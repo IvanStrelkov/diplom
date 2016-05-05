@@ -31,7 +31,7 @@ public class Like implements Serializable {
 	protected Long id;
 		
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id", nullable = false)
+	@JoinColumn(name = "profile_id", nullable = false)
 	protected User fromUser;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

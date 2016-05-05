@@ -34,10 +34,10 @@ public abstract class Record implements Serializable {
 	protected String text;
 	
 	@Column(name = "recordDate")
-	protected Date postDate;
+	protected Date recordDate;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id", nullable = false)
+	@JoinColumn(name = "profile_id", nullable = false)
 	protected User user;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "record")
@@ -64,12 +64,12 @@ public abstract class Record implements Serializable {
 		this.text = text;
 	}
 
-	public Date getPostDate() {
-		return postDate;
+	public Date getRecordDate() {
+		return recordDate;
 	}
 
-	public void setPostDate(Date postDate) {
-		this.postDate = postDate;
+	public void setRecordDate(Date recordDate) {
+		this.recordDate = recordDate;
 	}
 
 	public User getUser() {

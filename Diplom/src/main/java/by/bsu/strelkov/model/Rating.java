@@ -26,10 +26,10 @@ public abstract class Rating implements Serializable {
 	private Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id", nullable = false)
+	@JoinColumn(name = "profile_id", nullable = false)
 	private User fromUser;
 	
-	@Column(name = "to_user_id")
+	@Column(name = "to_profile_id")
 	private Long toUserId;
 	
 	@Column(name = "value")

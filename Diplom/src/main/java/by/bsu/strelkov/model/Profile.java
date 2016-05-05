@@ -1,18 +1,22 @@
 package by.bsu.strelkov.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import by.bsu.strelkov.model.record.Record;
 
 @Entity
 @Table(name = "profile")
@@ -43,6 +47,12 @@ public class Profile implements Serializable {
 	@PrimaryKeyJoinColumn
 	private User user;
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
+	protected List<Record> recordes;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
+	protected List<Rating> rating;
+	
 	public Profile() {
 		super();
 	}
