@@ -1,21 +1,18 @@
-package by.bsu.strelkov.model.like;
+package by.bsu.strelkov.model;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
-
-import by.bsu.strelkov.model.User;
 import by.bsu.strelkov.model.record.Record;
 
 @Entity
@@ -29,16 +26,16 @@ public class Like implements Serializable {
 	private static final long serialVersionUID = -8865237775940241122L;
 
 	@Id
-	@GeneratedValue(generator = "generator")
-	@GenericGenerator(name = "generator", strategy = "foreign", 
-	parameters = @Parameter(name = "property", value = "record"))
+	@GeneratedValue
 	@Column(name = "id")
 	protected Long id;
 		
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
 	protected User fromUser;
 	
-	@OneToOne
-	@PrimaryKeyJoinColumn
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "record_id", nullable = false)
 	private Record record;
 
 	public Like() {

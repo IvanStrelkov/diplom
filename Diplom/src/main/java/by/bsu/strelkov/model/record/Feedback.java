@@ -3,13 +3,11 @@ package by.bsu.strelkov.model.record;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "feedback")
-@PrimaryKeyJoinColumn(name = "record_id")
-public class Feedback implements Serializable{
+public class Feedback implements Serializable {
 
 	/**
 	 * 

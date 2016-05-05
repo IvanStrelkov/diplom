@@ -1,6 +1,7 @@
 package by.bsu.strelkov.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,8 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import by.bsu.strelkov.model.record.Record;
 
 @Entity
 @Table(name = "user")
@@ -33,6 +37,12 @@ public class User implements Serializable {
 	
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	private Profile profile;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	protected List<Record> recordes;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	protected List<Rating> rating;
 
 	public User() {
 		super();

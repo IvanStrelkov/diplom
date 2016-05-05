@@ -1,13 +1,11 @@
 package by.bsu.strelkov.model.record;
 
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "post")
-@PrimaryKeyJoinColumn(name = "record_id")
-public class Post extends Record{
+public class Post extends Record {
 
 	/**
 	 * 

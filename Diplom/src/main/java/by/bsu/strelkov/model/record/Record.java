@@ -1,28 +1,24 @@
 package by.bsu.strelkov.model.record;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 
+import by.bsu.strelkov.model.Like;
 import by.bsu.strelkov.model.User;
-import by.bsu.strelkov.model.like.Like;
 
-@Entity
-@Table(name = "record")
-@Inheritance(strategy=InheritanceType.JOINED)
-public class Record implements Serializable {
+@MappedSuperclass
+public abstract class Record implements Serializable {
 
 	/**
 	 * 
@@ -43,12 +39,13 @@ public class Record implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", nullable = false)
 	protected User user;
-	
-	@OneToOne(mappedBy="record", cascade=CascadeType.ALL)
-	protected Like like;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "record")
+	protected List<Like> likes;
 
 	public Record() {
 		super();
+		likes = new ArrayList<Like>();
 	}
 
 	public Long getId() {
@@ -83,12 +80,12 @@ public class Record implements Serializable {
 		this.user = user;
 	}
 
-	public Like getLike() {
-		return like;
+	public List<Like> getLikes() {
+		return likes;
 	}
 
-	public void setLike(Like like) {
-		this.like = like;
+	public void setLikes(List<Like> likes) {
+		this.likes = likes;
 	}
-	
+
 }
