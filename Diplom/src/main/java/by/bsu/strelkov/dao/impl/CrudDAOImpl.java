@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import by.bsu.strelkov.dao.CrudDAO;
 
+@Repository
 public abstract class CrudDAOImpl<T> implements CrudDAO<T> {
 
 	private Class<T> type;
