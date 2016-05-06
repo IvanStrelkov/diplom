@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 
 import by.bsu.strelkov.dao.CrudDAO;
 
-public class CrudDAOImpl<T> implements CrudDAO<T> {
+public abstract class CrudDAOImpl<T> implements CrudDAO<T> {
 
 	private Class<T> type;
 
