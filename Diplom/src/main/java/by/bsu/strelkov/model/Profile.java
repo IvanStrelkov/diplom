@@ -50,8 +50,11 @@ public class Profile implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
 	protected List<Record> recordes;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
-	protected List<Rating> rating;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "toProfile")
+	protected List<Rating> toRating;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "likeFromProfile")
+	protected List<Like> likes;
 	
 	public Profile() {
 		super();

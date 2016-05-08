@@ -6,15 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "feedback")
-public class Feedback implements Serializable {
+@Table(name = "Job")
+public class Job extends Record implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 122741675237633962L;
 
-	public Feedback() {
+	public Job() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

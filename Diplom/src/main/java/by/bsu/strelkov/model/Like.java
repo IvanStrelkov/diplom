@@ -32,7 +32,7 @@ public class Like implements Serializable {
 		
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "profile_id", nullable = false)
-	protected User fromUser;
+	protected Profile likeFromProfile;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "record_id", nullable = false)
@@ -49,13 +49,14 @@ public class Like implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 
-	public User getFromUser() {
-		return fromUser;
+	public Profile getLikeFromProfile() {
+		return likeFromProfile;
 	}
 
-	public void setFromUser(User fromUser) {
-		this.fromUser = fromUser;
+	public void setLikeFromProfile(Profile likeFromProfile) {
+		this.likeFromProfile = likeFromProfile;
 	}
 
 	public Record getRecord() {

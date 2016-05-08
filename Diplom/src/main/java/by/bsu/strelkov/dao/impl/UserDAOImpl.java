@@ -11,5 +11,11 @@ public class UserDAOImpl extends CrudDAOImpl<User> implements UserDAO {
 	public UserDAOImpl() {
 		super(User.class);
 	}
+
+	@Override
+	public void setRole(User user) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

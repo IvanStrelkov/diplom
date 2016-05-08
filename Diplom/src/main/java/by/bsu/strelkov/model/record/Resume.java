@@ -4,15 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "post")
-public class Post extends Record {
+@Table(name = "resume")
+public class Resume extends Record {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1676218670284745011L;
 
-	public Post() {
+	public Resume() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

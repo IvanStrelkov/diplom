@@ -27,7 +27,7 @@ public abstract class Rating implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "profile_id", nullable = false)
-	private User fromUser;
+	private Profile toProfile;
 	
 	@Column(name = "to_profile_id")
 	private Long toUserId;
@@ -54,14 +54,6 @@ public abstract class Rating implements Serializable {
 
 	public void setValue(int value) {
 		this.value = value;
-	}
-
-	public User getFromUser() {
-		return fromUser;
-	}
-
-	public void setFromUser(User fromUser) {
-		this.fromUser = fromUser;
 	}
 
 	public Long getToUserId() {

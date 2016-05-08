@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import by.bsu.strelkov.exception.DiplomException;
-import by.bsu.strelkov.model.record.Feedback;
-import by.bsu.strelkov.service.FeedbackService;
+import by.bsu.strelkov.model.record.Job;
+import by.bsu.strelkov.service.JobService;
 
 @Controller
 @RequestMapping("/feedback")
 public class FeedbackController {
 
 	@Autowired
-	private FeedbackService feedbackService;
+	private JobService feedbackService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
-	public List<Feedback> getAll() {
+	public List<Job> getAll() {
 		return feedbackService.readAll();
     }
 
 	@RequestMapping(value = "/{feedback_id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Feedback get(Model model, @PathVariable long feedback_id) {
+	public Job get(Model model, @PathVariable long feedback_id) {
 		return feedbackService.read(feedback_id);
     }
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public Feedback add(Model model, @ModelAttribute Feedback feedback) throws DiplomException {
+	public Job add(Model model, @ModelAttribute Job feedback) throws DiplomException {
 		return feedbackService.create(feedback);
     }
 
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseBody
-	public Feedback update(Model model, @ModelAttribute Feedback feedback) throws DiplomException {
+	public Job update(Model model, @ModelAttribute Job feedback) throws DiplomException {
 		return feedbackService.update(feedback);
     }
 

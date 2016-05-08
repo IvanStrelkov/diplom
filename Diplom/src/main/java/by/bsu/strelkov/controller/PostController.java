@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import by.bsu.strelkov.exception.DiplomException;
-import by.bsu.strelkov.model.record.Post;
-import by.bsu.strelkov.service.PostService;
+import by.bsu.strelkov.model.record.Resume;
+import by.bsu.strelkov.service.ResumeService;
 
 @Controller
 @RequestMapping("/post")
 public class PostController {
 
 	@Autowired
-	private PostService postService;
+	private ResumeService postService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
-	public List<Post> getAll() {
+	public List<Resume> getAll() {
 		return postService.readAll();
     }
 
 	@RequestMapping(value = "/{post_id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Post get(Model model, @PathVariable long post_id) {
+	public Resume get(Model model, @PathVariable long post_id) {
 		return postService.read(post_id);
     }
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public Post add(Model model, @ModelAttribute Post post) throws DiplomException {
+	public Resume add(Model model, @ModelAttribute Resume post) throws DiplomException {
 		return postService.create(post);
     }
 
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseBody
-	public Post update(Model model, @ModelAttribute Post post) throws DiplomException {
+	public Resume update(Model model, @ModelAttribute Resume post) throws DiplomException {
 		return postService.update(post);
     }
 

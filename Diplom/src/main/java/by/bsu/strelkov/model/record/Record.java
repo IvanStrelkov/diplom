@@ -6,19 +6,21 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import by.bsu.strelkov.model.Like;
-import by.bsu.strelkov.model.User;
+import by.bsu.strelkov.model.Profile;
 
-@MappedSuperclass
-public abstract class Record implements Serializable {
+@Entity
+@Table(name = "comment")
+public class Record implements Serializable {
 
 	/**
 	 * 
@@ -38,7 +40,7 @@ public abstract class Record implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "profile_id", nullable = false)
-	protected User user;
+	protected Profile profile;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "record")
 	protected List<Like> likes;
@@ -71,13 +73,14 @@ public abstract class Record implements Serializable {
 	public void setRecordDate(Date recordDate) {
 		this.recordDate = recordDate;
 	}
+	
 
-	public User getUser() {
-		return user;
+	public Profile getProfile() {
+		return profile;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setProfile(Profile profile) {
+		this.profile = profile;
 	}
 
 	public List<Like> getLikes() {

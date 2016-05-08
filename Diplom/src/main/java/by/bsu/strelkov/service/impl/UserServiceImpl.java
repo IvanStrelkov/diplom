@@ -16,5 +16,10 @@ public class UserServiceImpl extends CrudServiceImpl<User> implements UserServic
 	public UserServiceImpl(UserDAO userDAO) {
 		super(userDAO);
 		this.userDAO = userDAO;
+	}
+
+	@Override
+	public void setRole(User user) {
+		userDAO.setRole(user);
 	}	
 }
